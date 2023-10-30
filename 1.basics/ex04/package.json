@@ -1,0 +1,22 @@
+{
+  "name": "ex04",
+  "version": "1.0.0",
+  "description": "ex04: Application Bundling 이 필요함 매우 중요한 컨셉, 번들링이란 ... ??? (뿌찌뿌찌뽕)",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx webpack serve --progress",
+    "build": "npx webpack"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "css-loader": "^6.8.1",
+    "node-sass": "^9.0.0",
+    "sass-loader": "^13.3.2",
+    "style-loader": "^3.3.3",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
+  }
+}

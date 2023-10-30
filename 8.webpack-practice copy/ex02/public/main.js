@@ -1,1 +1,0 @@
-(()=>{"use strict";document.getElementById("root").appendChild(function(){const e=document.createElement("div");return e.textContent="Hello React",e.className="App",e}())})();

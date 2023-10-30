@@ -13,6 +13,6 @@ ex04: Application Bundling 이 필요함 매우 중요한 컨셉, 번들링이�
 ex07: ex00.cra Reconfiguration(모든걸 내가 직접 설정)
 ex08: JSX Tutorial
 
-npm i  -g create-react-app
+npm i -g create-react-app
 npx create-react-app ex00.cra
 npm start

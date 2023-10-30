@@ -10,3 +10,13 @@ ex04: Application Bundling 이 필요함 매우 중요한 컨셉, 번들링이�
    - 난독/압축(uglify)
    - bundling
 4. js 모듈 뿐만 아니라 다양한 asset(images, css, scss/sass, font)들도 모듈로 취급
+5. install(설치(류))
+   $ npm i -D webpack webpack-cli webpack-dev-server css-loader style-loader sass-loader node-sass
+6. 설치 확인
+   $ npx webpack --version
+7. webpack 설정(webpack.config.js)
+8. 스크립팅(package.json)
+9. Application Execute(test server execute)
+   $ npm start
+10. Application Build(bundling)
+   $ npm run build
