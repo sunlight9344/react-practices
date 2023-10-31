@@ -4,4 +4,3 @@
     [3] 변환 규칙은 plugin 또는 preset 을 가지고 있고 Babel 설정을 통해서 적용
     [4] 설치
         $ npm i -D @babel/core
-        
