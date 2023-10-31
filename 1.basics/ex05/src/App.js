@@ -5,12 +5,12 @@ function App() {
     // App.textContent = "Hello React PPIP";
 
     const App = React.createElement('div', null, 'Hello World');
-    return App;
+    return App;                 
 
     // THIS IS JSX !!!!!!!!!!!!!!!!
     // 하지만 바벨을 조금 해봐야한다. 20kg 짜리...
     // return (
-    //     <div>
+    //     <div>     
     //         hello World
     //         <ul>
     //             {
