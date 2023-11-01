@@ -14,7 +14,7 @@ function FoodList({foods}) {
                 key 값을 넣어줘야함 근데 왜였더라? key 값은 반복되는 element 에 그 안에 넣어주는게 좋다
                 *** 성능 *** 차이가 난다고 함 난다요
              */}
-            {foods.map(food => { return <FoodListItem key={food.no} name={food.name} count={food.count}/>})}
+            {foods.map(food => { return <FoodListItem key={food.no} name={food.name} count={food.count}/>;})}
         </ul>
     );
 }
