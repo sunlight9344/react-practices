@@ -16,6 +16,10 @@ ex02: Component Styling
             $ npm run debug src=04
         
     5. SASS & SCSS
+        - css-loader option: {module: true}
+        - 실행
+            $ npm run debug src=05
+    
     6. CSS in JS: Styled Component
     7. React Modal(Default Library SPA)
     8. Modal: Material UI
