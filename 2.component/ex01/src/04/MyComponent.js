@@ -1,7 +1,7 @@
 import React from 'react';
 import {PropTypes} from 'prop-types';
 
-function MyComponent({props01, props02, props03, props04, props05, props06, props07}) {
+function MyComponent({props01, props02, props03, props04, props05, props06, props07, props08, props09}) {
     return (
         <div>
             <h2>property validation</h2>
@@ -26,6 +26,27 @@ function MyComponent({props01, props02, props03, props04, props05, props06, prop
 
             <span>props07: {typeof(props07) !== 'undefined' ? props07 : '--- not set ---'}</span>
             <br/>
+
+            <span>props08: {typeof(props08) !== 'undefined' ? props08 : '--- not set ---'}</span>
+            <br/>
+
+            <span>
+                {'props09:'}
+                {
+                    typeof(props09) !== 'undefined' 
+                    ? 
+                    <div> 
+                        <h5>{props09.no}</h5> 
+                        <h5>{props09.name}</h5> 
+                        <h5>{props09.email}</h5> 
+                    </div> 
+                    :  
+                    <strong> 
+                        {'--- not set ---'} 
+                    </strong>
+                }
+            </span>
+            <br/>
         </div>
     );
 }
@@ -41,7 +62,13 @@ MyComponent.propTypes = {
     props06: PropTypes.func.isRequired,
 
     /* combined with javascript data types */
-    props07: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired
+    props07: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+    props08: PropTypes.arrayOf(PropTypes.string).isRequired,
+    props09: PropTypes.shape({
+        no: PropTypes.number.isRequired,
+        name: PropTypes.string.isRequired,
+        email: PropTypes.string.isRequired
+    }).isRequired,
 };
 
 MyComponent.defaultProps = {
