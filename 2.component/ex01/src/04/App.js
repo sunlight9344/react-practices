@@ -1,17 +1,17 @@
 import React from 'react';
-import FoodList from './FoodList';
+import MyComponent from './MyComponent';
 
 function App() {
     return (
         <div id={'App'}>
             <MyComponent
-                props01={10} 
-                props02={''} 
-                props03={true} 
+                props02={12412413}
+                props03={true}
                 props04={{no:1, name:'리돌'}}
-                props05={[]}
-                props06={() => {}}
-                 />
+                props05={['javascript','react']}
+                props06={() => '함수'}
+                props07={'asdfasf'}
+             />
         </div>  
     );
 }
