@@ -1,3 +1,4 @@
+export default
 [
     {
         "no": 1,
