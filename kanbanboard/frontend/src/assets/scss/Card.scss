@@ -1,4 +1,4 @@
-.Card { 
+.Card {
     position: relative; 
     z-index: 1; 
     background: #fff; 
@@ -9,4 +9,16 @@
     border: 1px solid #e5e5df; 
     border-radius: 3px; 
     box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25); 
+}
+
+.Card__Title__is_open{ 
+    font-weight: bold; 
+    border-bottom: solid 5px transparent;
+}
+
+.Card__Title {
+    font-weight: bold; 
+    border-bottom: solid 5px transparent; 
+    &:before { display: inline-block; width: 1em; content: '▸'; }
+    &__is_open:before { content: '▾'; }
 }

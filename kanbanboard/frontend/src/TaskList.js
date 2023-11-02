@@ -1,10 +1,12 @@
 import React from 'react';
-import styles from './assets/scss/TaskList.scss';
+import Task from './Task';
 
-function TaskList(props) {
+function TaskList({tasks}) {
     return (
-        <div className={styles.TaskList}>
-            TaskList
+        <div className='TaskList'>
+            <ul>
+                {tasks.map((task,i) => <Task key={i} no={task.no} name={task.name} done={task.done} />)}
+            </ul>
         </div>
     );
 }
