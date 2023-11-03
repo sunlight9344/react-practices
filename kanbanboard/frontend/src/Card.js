@@ -8,7 +8,7 @@ function Card({title, description, tasks}) {
 
     return (
         <div className={styles.Card}>
-            <div className= {showDetails ? styles.Card__Title__is_open : styles.Card__Title} onClick={() => setShowDetails(!showDetails)}>
+            <div className= {showDetails ? [styles.Card__Title, styles.Card__Title__open].join(' ') : styles.Card__Title} onClick={() => setShowDetails(!showDetails)}>
                 {title}
             </div>
 
