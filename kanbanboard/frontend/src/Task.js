@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import styles from './assets/scss/TaskListTask.scss';
+import styles from './assets/scss/TaskListTask.css';
 
 function Task({no, name, done}) {
 
     const [check, setCheck] = useState('');
-    const [isDelete, setIsDelete] = useState(true);
+    const [visible, setVisible] = useState(true);
 
     const handleRemoveClick = () => {
-        setIsDelete(false);
+        setVisible(false);
     }
 
     return (
@@ -15,9 +15,9 @@ function Task({no, name, done}) {
             <input type='checkbox' value={check} defaultChecked={done} onChange={e => setCheck(e.target.value)}/>
             {name}
             {   
-            isDelete 
+            visible 
             ? 
-            <a href='#' className={styles.TaskList__Task__remove} onClick={handleRemoveClick}></a> 
+            <a href='#' className={styles.TaskList__Task__remove} onClick={handleRemoveClick}></a>
             : 
             null
             }

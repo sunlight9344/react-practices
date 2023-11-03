@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './assets/scss/CardList.scss';
+import styles from './assets/scss/CardList.css';
 import Card from './Card';
 
 function CardList({Title, cards}) {
