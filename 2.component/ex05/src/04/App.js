@@ -3,11 +3,11 @@ import './assets/scss/App.scss'
 import Clock from './Clock';
 
 export default function App() {
-
     const [ticks, setTicks] = useState(0);
-    setInterval(() => {
+
+    useEffect(() => {
         setTicks(ticks+1);
-    }, 1000); 
+    }, []);
 
     return (
         <>

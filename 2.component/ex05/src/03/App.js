@@ -5,31 +5,27 @@ import Clock from './Clock';
 export default class App extends Component {
     constructor(props) {
         super(props);
-        this.state ={ currentTime: this._getCurrentTime() }
+        this.state ={ currentTime: new Date() }
     }
     
-    _getCurrentTime() {
-        const date = new Date();
-        return {
-            date
-        }
-    }
-
     componentDidMount() {
         this.intervalid = setInterval(() => {
-            this._getCurrentTime;
+            this.setState({currentTime: new Date()});
         }, 1000);
     }
 
     render() {
+        const hours = this.state.currentTime.getHours();
+        const minutes = this.state.currentTime.getMinutes();
+        const seconds = this.state.currentTime.getSeconds();
         return (
             <div className='clock-display'>
-                <h2>ex05 - Component LifeCycle Practice</h2>
+                <h2>{this.state.currentTime.toLocaleTimeString()}</h2>
                     <Clock 
-                        hours={this.state}
-                        minutes={32}
-                        seconds={14}
-                        session={'pm'}
+                        hours={hours < 10 ? '0' + hours : hours}
+                        minutes={minutes < 10 ? '0' + minutes : minutes}
+                        seconds={seconds < 10 ? '0' + seconds : seconds}
+                        session={this.state.currentTime.getHours() < 12 ? 'pm' : 'am'}
                     />
             </div>
         );
