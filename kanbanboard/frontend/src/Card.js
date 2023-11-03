@@ -4,15 +4,17 @@ import TaskList from './TaskList';
 
 function Card({title, description, tasks}) {
 
-    const [validCheck, setValidCheck] = useState(true);
+    const [showDetails, setShowDetails] = useState(true);
+
     return (
         <div className={styles.Card}>
-            <div className= {validCheck && tasks.length ? styles.Card__Title__is_open : styles.Card__Title} onClick={e => setValidCheck(!validCheck)}>
+            <div className= {showDetails ? styles.Card__Title__is_open : styles.Card__Title} onClick={() => setShowDetails(!showDetails)}>
                 {title}
             </div>
+
             <div>
                 {description}
-                {validCheck ? <TaskList tasks={tasks} /> : null}
+                {showDetails ? <TaskList tasks={tasks} /> : null}
             </div>
         </div>
     );
