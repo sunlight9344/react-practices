@@ -20,7 +20,7 @@ export default class App extends Component {
         const seconds = this.state.currentTime.getSeconds();
         return (
             <div className='clock-display'>
-                <h2>{this.state.currentTime.toLocaleTimeString()}</h2>
+                <h2>ex03 - Component LifeCycle Practice</h2>
                     <Clock 
                         hours={hours < 10 ? '0' + hours : hours}
                         minutes={minutes < 10 ? '0' + minutes : minutes}

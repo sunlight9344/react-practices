@@ -4,19 +4,28 @@ import Clock from './Clock';
 
 export default function App() {
     const [ticks, setTicks] = useState(0);
+    const [date, setDate] = useState(new Date());
+
+    function refreshClock() {
+        setDate(new Date());
+        setTicks(ticks+1);
+        console.log(ticks);
+    }
 
     useEffect(() => {
-        setTicks(ticks+1);
-    }, []);
-
+        const timerId = setInterval(refreshClock, 1000);
+        return function cleanup() {
+            clearInterval(timerId);
+        };
+    });
+    
     return (
         <>
-            <span>{ticks}</span>
             <Clock
-                message={'ex05: useEffect Hook example'}
-                hours={2}
-                minutes={9}
-                seconds={42}/>
+                message={'ticks : ' + ticks}
+                hours={date.getHours() < 10 ? '0' + date.getHours() : date.getHours()}
+                minutes={date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()}
+                seconds={date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds()} />
         </>
     );
 }
