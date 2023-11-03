@@ -4,21 +4,11 @@ import Clock from './Clock';
 
 export default function App() {
     const [ticks, setTicks] = useState(0);
-    const [date, setDate] = useState(new Date());
-
-    function refreshClock() {
-        setDate(new Date());
-        setTicks(ticks+1);
-        console.log(ticks);
-    }
 
     useEffect(() => {
-        const timerId = setInterval(refreshClock, 1000);
-        return function cleanup() {
-            clearInterval(timerId);
-        };
-    });
-    
+        setTicks(ticks+1);
+    }, []);
+
     return (
         <>
             <Clock
