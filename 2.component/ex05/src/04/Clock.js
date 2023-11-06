@@ -5,6 +5,13 @@ import './assets/scss/Clock.scss';
 
 export default function Clock({message, hours, minutes, seconds}) {
 
+    useEffect(()=>{
+        console.log("amount");
+        return ()=>{
+            console.log("willAmount");
+        }
+    }, []);
+
     return (
         <div className={'clock-display'}>
             <h2>{message}</h2>

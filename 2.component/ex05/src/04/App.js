@@ -8,13 +8,12 @@ export default function App() {
 
     function refreshClock() {
         setDate(new Date());
-        setTicks(ticks+1);
-        console.log(ticks);
+        setTicks(prev => prev+1);
     }
 
     useEffect(() => {
         const timerId = setInterval(refreshClock, 1000);
-        return function cleanup() {
+        return () => {
             clearInterval(timerId);
         };
     });
