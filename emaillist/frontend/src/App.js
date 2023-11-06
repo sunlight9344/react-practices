@@ -11,8 +11,7 @@ function App() {
     };
 
     const addEmail = async (email) => {
-        console.log(email);
-        fetch('/api', {
+        const response = await fetch('/api', {
             method: 'post',
             headers: {
                 'Content-Type': 'application/json',
@@ -20,6 +19,19 @@ function App() {
             },
             body: JSON.stringify(email)
         });
+
+        if(!response.ok) {
+            throw new Error(`${response.status} ${response.statusText}`)
+        }
+
+        const json = await response.json();
+
+        if(json.result !== 'success') {
+            throw new Error(`${json.result} ${json.message}`)
+        }
+
+        const newEmails = [json.data, ...emails];
+        setEmails(newEmails);
     }
 
     const fetchList = async () => {
@@ -31,7 +43,7 @@ function App() {
                 },
                 body: null
             });
-            
+
             if(!response.ok) {
                 throw new Error(`${response.status} ${response.statusText}`)
             }

@@ -18,4 +18,8 @@ public class EmaillistRepository {
 		return sqlSession.selectList("emaillist.findAll");
 	}
 
+	public void insert(EmaillistVo vo) {
+		sqlSession.insert("emaillist.insert", vo);
+	}
+
 }

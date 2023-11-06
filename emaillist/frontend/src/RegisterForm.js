@@ -3,7 +3,7 @@ import styles from './assets/scss/RegisterForm.scss';
 
 function RegisterForm({addEmail}) {
     return (
-        <form 
+        <form
             className={styles.RegisterForm}
             onSubmit={(e) => {
                 e.preventDefault();
