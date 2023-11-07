@@ -12,6 +12,9 @@ import com.poscodx.emaillist.dto.JsonResult;
 import com.poscodx.emaillist.repository.EmaillistRepository;
 import com.poscodx.emaillist.vo.EmaillistVo;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @RestController
 public class ApiController {
 	
@@ -20,13 +23,15 @@ public class ApiController {
 	
 	@GetMapping("/api")
 	public ResponseEntity<JsonResult> read() {
+		log.info("Request[GET /api]");
 		return ResponseEntity
 				.status(HttpStatus.OK)
 				.body(JsonResult.success(emaillistRepository.findAll()));
 	}
 	
 	@PostMapping("/api")
-	public ResponseEntity<JsonResult> insert(@RequestBody EmaillistVo vo) {
+	public ResponseEntity<JsonResult> create(@RequestBody EmaillistVo vo) {
+		log.info("Request[POST /api]");
 		emaillistRepository.insert(vo);
 		return ResponseEntity
 				.status(HttpStatus.OK)
