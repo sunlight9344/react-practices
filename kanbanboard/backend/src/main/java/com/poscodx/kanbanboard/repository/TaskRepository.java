@@ -23,13 +23,15 @@ public class TaskRepository {
 		return sqlSession.insert("task.insert", taskVo) == 1;
 	}
 	
-
-
 	public Boolean updateDone(Long no, String done) {
 		return sqlSession.update("task.updateDone", new HashMap<String, Object>() {{
 		    put("no", no);
 		    put("done", done);
 		}}) == 1;
 
+	}
+
+	public Boolean deleteTask(Long no) {
+		return sqlSession.delete("task.delete", no) == 1;
 	}
 }

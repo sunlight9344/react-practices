@@ -5,6 +5,7 @@ import java.util.HashMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -55,7 +56,6 @@ public class ApiController {
 	@PutMapping("/task/{no}")
 	public ResponseEntity<JsonResult> updateTask(@PathVariable("no") Long no, String done) {
 		taskRepository.updateDone(no, done);
-		System.out.println(no + done);
 		return ResponseEntity
 				.status(HttpStatus.OK)
 				.body(JsonResult.success(new HashMap<String, Object>() {{
@@ -63,5 +63,12 @@ public class ApiController {
 				    put("done", done);
 				}}));
 	}
-
+	
+	@DeleteMapping("/task/{no}")
+	public ResponseEntity<JsonResult> removeTask(@PathVariable("no") Long no) {
+		taskRepository.deleteTask(no);
+		return ResponseEntity
+				.status(HttpStatus.OK)
+				.body(JsonResult.success("ok"));
+	}
 }

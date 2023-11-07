@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styles from './assets/scss/TaskListTask.css';
 
-const Task = ({no, done, name}) => {
+const Task = ({deleteTask, no, done, name}) => {
 
     const [tempDone, setTempDone] = useState(done);
 
@@ -25,9 +25,7 @@ const Task = ({no, done, name}) => {
             if(json.result !== 'success') {
                 throw new Error(`${json.result} ${json.message}`)
             }
-
             setTempDone(json.data.done);
-            console.log(json.data);
 
         } catch(err) {
             console.log(err);
@@ -41,7 +39,7 @@ const Task = ({no, done, name}) => {
                 checked={tempDone == 'Y' ? true : false}
                 onChange={updateDone}/>
             {name}    
-            <a href='#' className={styles.TaskList__Task__remove} onClick={()=>{}} />
+            <a href='#' className={styles.TaskList__Task__remove} onClick={()=>deleteTask(no)} />
         </li>
     );
 };

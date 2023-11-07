@@ -5,6 +5,34 @@ import styles from './assets/scss/TaskListTask.css';
 function TaskList({no}) {
 
     const [tasks, setTasks] = useState(null);
+
+    const deleteTask = async (taskNo) => {
+        try{
+            const response = await fetch(`/api/task/${taskNo}`, {
+                method: 'delete',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: null
+            });
+
+            if(!response.ok) {
+                throw new Error(`${response.status} ${response.statusText}`)
+            }
+
+            const json = await response.json();
+
+            if(json.result !== 'success') {
+                throw new Error(`${json.result} ${json.message}`)
+            }
+
+            setTasks(tasks.filter(task => task.no !== taskNo));
+
+        } catch(err) {
+            console.log(err);
+        }
+    }
     
     const fetchTasks = async() => {
         try{
@@ -40,7 +68,7 @@ function TaskList({no}) {
         return (
             <div className='TaskList'>
                 <ul>
-                    {tasks.map((task,i) => <Task key={i} no={task.no} name={task.name} done={task.done} />)}
+                    {tasks.map((task,i) => <Task key={i} no={task.no} name={task.name} done={task.done} deleteTask={deleteTask} />)}
                 </ul>
                 <input
                     className={styles.TaskList__add_task}
