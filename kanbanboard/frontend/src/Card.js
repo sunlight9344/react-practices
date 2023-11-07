@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import styles from './assets/scss/Card.scss';
 import TaskList from './TaskList';
 
-function Card({title, description, tasks}) {
+function Card({no, title, description, tasks}) {
 
-    const [showDetails, setShowDetails] = useState(true);
+    const [showDetails, setShowDetails] = useState(false);
 
     return (
         <div className={styles.Card}>
@@ -13,8 +13,13 @@ function Card({title, description, tasks}) {
             </div>
 
             <div>
-                {description}
-                {showDetails ? <TaskList tasks={tasks} /> : null}
+                {showDetails ? 
+                    <div className={styles.Card__Details}>
+                        {description}
+                        <TaskList no={no}/>
+                    </div>:
+                    null
+                }  
             </div>
         </div>
     );

@@ -1,28 +1,49 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './assets/scss/TaskListTask.css';
 
-function Task({no, name, done}) {
+const Task = ({no, done, name}) => {
 
-    const [check, setCheck] = useState('');
-    const [visible, setVisible] = useState(true);
+    const [tempDone, setTempDone] = useState(done);
 
-    const handleRemoveClick = () => {
-        setVisible(false);
+    const updateDone = async () => {
+        try{
+            const response = await fetch(`/api/task/${no}?done=${tempDone=='Y' ? 'N' : 'Y'}`, {
+                method: 'put',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: null
+            });
+
+            if(!response.ok) {
+                throw new Error(`${response.status} ${response.statusText}`)
+            }
+
+            const json = await response.json();
+
+            if(json.result !== 'success') {
+                throw new Error(`${json.result} ${json.message}`)
+            }
+
+            setTempDone(json.data.done);
+            console.log(json.data);
+
+        } catch(err) {
+            console.log(err);
+        }
     }
 
     return (
         <li className={styles.TaskList__Task}>
-            <input type='checkbox' value={check} defaultChecked={done} onChange={e => setCheck(e.target.value)}/>
-            {name}
-            {   
-            visible 
-            ? 
-            <a href='#' className={styles.TaskList__Task__remove} onClick={handleRemoveClick}></a>
-            : 
-            null
-            }
+            <input
+                type='checkbox'
+                checked={tempDone == 'Y' ? true : false}
+                onChange={updateDone}/>
+            {name}    
+            <a href='#' className={styles.TaskList__Task__remove} onClick={()=>{}} />
         </li>
     );
-}
+};
 
 export default Task;
