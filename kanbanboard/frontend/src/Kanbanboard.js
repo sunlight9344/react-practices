@@ -36,15 +36,18 @@ function Kanbanboard() {
 
     useEffect(() => {fetchCards()},[]);
 
-    if(cards){
+    
     return (
+        cards ? 
         <div className={styles.KanbanBoard}>
             <CardList Title='ToDo'  cards={cards.filter(card => card.status === 'ToDo')} />
             <CardList Title='Doing' cards={cards.filter(card => card.status === 'Doing')} />
             <CardList Title='Done'  cards={cards.filter(card => card.status === 'Done')} />
         </div>
+        :
+        <></>
     );
-    }
+    
 }
 
 export default Kanbanboard;

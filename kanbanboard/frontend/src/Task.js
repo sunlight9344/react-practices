@@ -7,7 +7,7 @@ const Task = ({deleteTask, updateTask, no, done, name}) => {
         <li className={styles.TaskList__Task}>
             <input
                 type='checkbox'
-                checked={done == 'Y' ? true : false}
+                checked={done === 'Y'}
                 onChange={()=>updateTask(no, done)}/>
             {name}    
             <a href='#' className={styles.TaskList__Task__remove} onClick={()=>deleteTask(no)} />

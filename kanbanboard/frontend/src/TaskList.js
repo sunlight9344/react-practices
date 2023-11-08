@@ -1,6 +1,7 @@
 import React, {useEffect, useState, useRef} from 'react';
 import Task from './Task';
 import styles from './assets/scss/TaskListTask.css';
+import update from 'react-addons-update';
 
 function TaskList({no}) {
 
@@ -40,8 +41,7 @@ function TaskList({no}) {
             }
 
             setTasks([ json.data,...tasks]);
-            console.log(json.data);
-            
+
         } catch(err) {
             console.log(err);
         }
@@ -49,13 +49,13 @@ function TaskList({no}) {
 
     const updateTask = async (taskNo, done) => {
         try{
-            const response = await fetch(`/api/task/${taskNo}?done=${done=='Y' ? 'N' : 'Y'}`, {
+            const response = await fetch(`/api/task/${taskNo}`, {
                 method: 'put',
                 headers: {
-                    'Content-Type': 'application/json',
+                    'Content-Type': 'application/x-www-form-urlencoded',
                     'Accept': 'application/json'
                 },
-                body: null
+                body: `done=${done==='Y' ? 'N' : 'Y'}`
             });
 
             if(!response.ok) {
@@ -67,8 +67,17 @@ function TaskList({no}) {
             if(json.result !== 'success') {
                 throw new Error(`${json.result} ${json.message}`)
             }
+            
+            const index = tasks.findIndex(task => task.no === json.data.no)
+            const newTasks = update(tasks , {
+                [index]: {
+                    done: {
+                        $set: json.data.done
+                    } 
+                }
+            });
 
-            fetchTasks()
+            setTasks(newTasks);
 
         } catch(err) {
             console.log(err);
@@ -137,7 +146,12 @@ function TaskList({no}) {
         return (
             <div className='TaskList'>
                 <ul>
-                    {tasks.map((task,i) => <Task key={i} no={task.no} name={task.name} done={task.done} deleteTask={deleteTask} updateTask={updateTask}/>)}
+                    {tasks?.map((task,i) => <Task key={i} 
+                                            no={task.no} 
+                                            name={task.name} 
+                                            done={task.done} 
+                                            deleteTask={deleteTask} 
+                                            updateTask={updateTask}/>)}
                 </ul>
                 <input
                     className={styles.TaskList__add_task}

@@ -18,7 +18,7 @@ function Card({no, title, description}) {
                         {description}
                         <TaskList no={no}/>
                     </div>:
-                    null
+                    <></>
                 }  
             </div>
         </div>
