@@ -8,7 +8,8 @@ module.exports = function(env){
         entry: path.resolve(`src/index.js`),
         /* --------------------------------------------------- */
         output: {
-            path: path.resolve('public'),
+            // 사실 빌드 (할)됐을 때의 위치를 얘기하는 것임
+            path: path.resolve('../backend/src/main/resources'),
             filename: 'assets/js/main.js',
             assetModuleFilename: 'assets/images/[hash][ext]'
         },
@@ -54,7 +55,11 @@ module.exports = function(env){
             hot: false,
             proxy: {
                 '/api': 'http://localhost:8080'
-            }
+            },
+            static: {
+                directory: path.resolve('./public')
+            },
+            historyApiFallback: true
         }
     };
 }

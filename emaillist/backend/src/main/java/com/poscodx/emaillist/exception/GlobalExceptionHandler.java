@@ -17,6 +17,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @ControllerAdvice
 public class GlobalExceptionHandler {
+	
 	@ResponseBody
 	@ExceptionHandler
 	public ResponseEntity<JsonResult> handlerException(Exception e) {
@@ -35,4 +36,5 @@ public class GlobalExceptionHandler {
 				.status(HttpStatus.OK)
 				.body(jsonResult);
 	}
+	
 }

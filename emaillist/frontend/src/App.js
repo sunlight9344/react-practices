@@ -5,6 +5,7 @@ import Searchbar from './Searchbar';
 import Emaillist from './Emaillist';
 
 function App() {
+    console.log('Hello Full Stack');
     const[emails, setEmails] = useState(null);
 
     const addEmail = async (email) => {
