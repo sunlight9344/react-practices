@@ -26,7 +26,19 @@
     5. 접속 테스트
        # ssh -i mykey.pem root@192.168.0.180
     
+    6. 접속 환경 설정
+        1.  ~/.ssh/environment
+            =======
+            PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/usr/local/poscodx2023/java/bin:/usr/local/poscodx2023/git/bin:/usr/local/poscodx2023/maven/bin:/usr/local/poscodx2023/mariadb/bin:/root/bin
+            =======
+
+        2. /etc/ssh/sshd_config
+            PermitUserEnvironment yes
+
 3-2. deploy: Publish Over SSH 플러그인(Jenkins)
     1. publish over ssh 플러그인 설치
     2. Jenkins 관리 > System
-        - 실행서버 (ssh server) 등록
+        - 실행서버 (ssh server) 등록: springboot-publish-server
+        - 프로젝트의 빌드 후 조치(post-build action)의 send build artifacts over ssh 설정
+            1. emaillist.jar: transfer
+            2. launch.sh: transfer + execution
