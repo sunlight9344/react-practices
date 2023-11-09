@@ -106,7 +106,7 @@
 					</arguments>
 					<environmentVariables></environmentVariables>
 				</configuration>
-			</plugin>					
+			</plugin>		
 		</plugins>
 		<finalName>emaillist</finalName>		
 	</build>	
